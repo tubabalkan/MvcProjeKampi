@@ -19,7 +19,7 @@ namespace BusinessLayer.Concrete
 
         public void CategoryAddBL(Category p)
         {
-            if(p.CategoryName==null || p.CategoryName.Length<=3 || p.CategoryDescriprion=="" || p.CategoryName.Length >= 51)
+            if (p.CategoryName == null || p.CategoryName.Length <= 3 || p.CategoryDescriprion == "" || p.CategoryName.Length >= 51)
             {
                 //hata mesajı
             }
