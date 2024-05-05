@@ -51,7 +51,7 @@ namespace MvcProjeKampi.Controllers
             ValidationResult results = messagevalidator.Validate(p);
             if (results.IsValid)
             {
-
+                
                 mm.MessageAdd(p);
                 return RedirectToAction("Sendbox");
             }

@@ -38,6 +38,8 @@ namespace BusinessLayer.Concrete
             _messageDal.Insert(message);
         }
 
+        
+
         public void MessageDelete(Message message)
         {
             _messageDal.Delete(message);
