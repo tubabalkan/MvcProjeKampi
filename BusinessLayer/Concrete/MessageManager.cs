@@ -13,7 +13,7 @@ namespace BusinessLayer.Concrete
     {
         IMessageDal _messageDal;
 
-        public MessageManager(IMessageDal messageDal)
+        public MessageManager(IMessageDal messageDal) 
         {
             _messageDal = messageDal;
         }
