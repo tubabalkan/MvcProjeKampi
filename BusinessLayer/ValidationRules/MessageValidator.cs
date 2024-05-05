@@ -1,5 +1,6 @@
 ﻿using EntityLayer.Concrete;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.Subject).MinimumLength(3).WithMessage("Lütfen en az 3 karakter girişi yapın");
             RuleFor(x => x.MessageContent).MinimumLength(3).WithMessage("Lütfen en az 3 karakter girişi yapın");
             RuleFor(x => x.Subject).MaximumLength(50).WithMessage("Lütfen en fazla 50 karakter girişi yapın");
-        }   
+        }
+
+       
     }
 }

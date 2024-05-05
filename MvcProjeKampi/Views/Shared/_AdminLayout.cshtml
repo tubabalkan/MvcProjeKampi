@@ -120,7 +120,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/Contact/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     İletişim & Mesajlar
@@ -207,5 +207,13 @@ to get the desired effect
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- Page Script -->
+    <script>
+        $(function () {
+            //Add text editor
+            $('#compose-textarea').summernote().noConflict;
+        })
+    </script>
 </body>
 </html>
