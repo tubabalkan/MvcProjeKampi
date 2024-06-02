@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
+using EntityLayer.Concrete;
 using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace MvcProjeKampi.Controllers
@@ -46,9 +47,9 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult NewMessage(Message p)
+        public ActionResult NewMessage(EntityLayer.Concrete.Message p)
         {
-            ValidationResult results = messagevalidator.Validate(p);
+            ValidationResult results = messagevalidator.Validate( p);
             if (results.IsValid)
             {
                 
@@ -62,7 +63,7 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return View();
+            return View(p);
         }
     }
 }
