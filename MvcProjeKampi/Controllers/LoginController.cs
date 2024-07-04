@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Context = DataAccessLayer.Concrete.Context;
+using System.Web.UI.WebControls;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -35,6 +36,27 @@ namespace MvcProjeKampi.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult WriterLogin(writer p)
+        {
+            Context c = new Context();
+            var writeruserinfo = c.Writers.FirstOrDefault(x => x.writerMail == p.writerMail && x.writerPassword == p.writerPassword);
+            if (writeruserinfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(writeruserinfo.writerMail, false);
+                Session["writerMail"] = writeruserinfo.writerMail;
+                return RedirectToAction("WriterPanelContent", "MyContent");
+            }
+            else
+            {
+                return RedirectToAction("WriterLogin");
+            }
+       
         }
     }
 }
