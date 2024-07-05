@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -6,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -18,10 +21,12 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
-        public ActionResult MyHeading()
+        public ActionResult MyHeading(string p)
         {
-           // id = 1;
-            var values = hm.GetListByWriter();
+            Context c= new Context();
+            p = (string)Session["writerMail"];
+            var writeridinfo=c.Writers.Where(x=>x.writerMail==p).Select(y=>y.writerId).FirstOrDefault();
+            var values=hm.GetListByWriter(writeridinfo);
             return View(values);
         }
         [HttpGet]
@@ -73,6 +78,15 @@ namespace MvcProjeKampi.Controllers
             headingvalue.HeadinStatus = false;
             hm.HeadingDelete(headingvalue);
             return RedirectToAction("MyHeading");
+        }
+        public ActionResult AllHeading(int p=1)
+        {
+            var headingss = hm.GetList().ToPagedList(p, 6);
+            return View(headingss);
+        }
+        public ActionResult ToDoList()
+        {
+            return View();
         }
     }
 }
