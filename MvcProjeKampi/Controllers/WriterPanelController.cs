@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using BusinessLayer.ValidationRules;
+using FluentValidation.Results;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -17,10 +19,38 @@ namespace MvcProjeKampi.Controllers
         // GET: WriterPanel
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
+        WriterValidator writervalidator = new WriterValidator();
+        WriterManager wm = new WriterManager(new EfWriterDal());
         Context c = new Context();
-        public ActionResult WriterProfile()
+        [HttpGet]
+        public ActionResult WriterProfile(int id=0)
         {
+            string p = (string)Session["writerMail"];
+           
+            id = c.Writers.Where(x => x.writerMail == p).Select(y => y.writerId).FirstOrDefault();
+            var writerValue=wm.GetById(id);
+         
+            return View(writerValue);
+        }
+      
+        [HttpPost]
+        public ActionResult WriterProfile(writer p)
+        {
+            ValidationResult results = writervalidator.Validate(p);
+            if (results.IsValid)
+            {
+                wm.WriterUpdate(p);
+                return RedirectToAction("AllHeading","WriterPanel");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
+
         }
         public ActionResult MyHeading(string p)
         {

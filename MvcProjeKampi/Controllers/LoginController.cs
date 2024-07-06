@@ -51,7 +51,7 @@ namespace MvcProjeKampi.Controllers
             {
                 FormsAuthentication.SetAuthCookie(writeruserinfo.writerMail, false);
                 Session["writerMail"] = writeruserinfo.writerMail;
-                return RedirectToAction("WriterPanelContent", "MyContent");
+                return RedirectToAction("WriterPanel", "WriterProfile");
             }
             else
             {
