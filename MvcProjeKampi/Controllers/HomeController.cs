@@ -26,5 +26,9 @@ namespace MvcProjeKampi.Controllers
 
             return View();
         }
+        public ActionResult HomePage()
+        {
+            return View();
+        }
     }
 }
