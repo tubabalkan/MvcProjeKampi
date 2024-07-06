@@ -17,13 +17,14 @@ namespace MvcProjeKampi.Controllers
         // GET: WriterPanel
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
+        Context c = new Context();
         public ActionResult WriterProfile()
         {
             return View();
         }
         public ActionResult MyHeading(string p)
         {
-            Context c= new Context();
+          
             p = (string)Session["writerMail"];
             var writeridinfo=c.Writers.Where(x=>x.writerMail==p).Select(y=>y.writerId).FirstOrDefault();
             var values=hm.GetListByWriter(writeridinfo);

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using FluentValidation.Results;
 using System;
@@ -15,14 +16,17 @@ namespace MvcProjeKampi.Controllers
      
         MessageManager mm = new MessageManager(new EfMessageDal());
         MessageValidator messagevalidator = new MessageValidator();
+    
         public ActionResult Inbox()
         {
-            var messageList = mm.GetListInbox();
+           string p = (string)Session["writerMail"];
+            var messageList = mm.GetListInbox(p);
             return View(messageList);
         }
         public ActionResult Sendbox()
         {
-            var messageList = mm.GetListSendbox();
+            string p = (string)Session["writerMail"];
+            var messageList = mm.GetListSendbox(p);
             return View(messageList);
         }
         public PartialViewResult MessageListMenu()
