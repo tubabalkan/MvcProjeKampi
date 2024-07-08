@@ -49,10 +49,9 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(EntityLayer.Concrete.Message p)
         {
-            ValidationResult results = messagevalidator.Validate( p);
+            ValidationResult results = messagevalidator.Validate(p);
             if (results.IsValid)
             {
-                
                 mm.MessageAdd(p);
                 return RedirectToAction("Sendbox");
             }

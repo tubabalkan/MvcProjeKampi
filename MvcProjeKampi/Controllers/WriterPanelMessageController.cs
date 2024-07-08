@@ -54,7 +54,8 @@ namespace MvcProjeKampi.Controllers
             ValidationResult results = messagevalidator.Validate(p);
             if (results.IsValid)
             {
-                p.SenderMail = "tuba65@gmail.com";
+                p.SenderMail = (string)Session["writerMail"];
+                p.MessageDate = DateTime.Now;
                 mm.MessageAdd(p);
                 return RedirectToAction("Sendbox");
             }

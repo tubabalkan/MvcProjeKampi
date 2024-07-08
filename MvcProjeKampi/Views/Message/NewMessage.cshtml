@@ -4,27 +4,19 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible=" IE=edge">
     <title>AdminLTE 3 | Compose Message</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <!-- Theme style -->
-    <!-- summernote -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
-
-    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote.min.js"></script>
-    <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
 </head>
 <body class="hold-transition sidebar-mini">
-
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -38,14 +30,12 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 @Html.Action("MessageListMenu", "Contact")
-                <!-- /.col -->
                 <div class="col-md-9">
                     @using (Html.BeginForm("NewMessage", "Message", FormMethod.Post))
                     {
@@ -53,7 +43,6 @@
                             <div class="card-header">
                                 <h3 class="card-title">Yeni Mesaj Oluştur</h3>
                             </div>
-                            <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group">
                                     @Html.Label("Alıcı")
@@ -67,7 +56,8 @@
                                 </div>
                                 <div class="form-group">
                                     @Html.Label("Mesajınız")
-                                    <textarea id="compose-textarea" name="MessageContent" class="form-control" style="height: 300px"> </textarea>
+                                    @Html.TextAreaFor(x => x.MessageContent, new { @class = "form-control", id = "compose-textarea" })
+                                    @Html.ValidationMessageFor(x => x.MessageContent)
                                 </div>
                                 <div class="form-group">
                                     <div class="btn btn-default btn-file">
@@ -77,7 +67,6 @@
                                     <p class="help-block">Max. 32MB</p>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                             <div class="card-footer">
                                 <div class="float-right">
                                     <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Taslaklar Kaydet</button>
@@ -85,38 +74,23 @@
                                 </div>
                                 <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</button>
                             </div>
-                            <!-- /.card-footer -->
                         </div>
                     }
-                        <!-- /.card -->
-                    </div>
-                <!-- /.col -->
+                </div>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
-    <!-- /.content -->
-    <!-- /.content-wrapper -->
-    <!-- Control Sidebar -->
-    <!-- /.control-sidebar -->
-    <!-- ./wrapper -->
-    <!-- jQuery -->
     <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
     <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
-    <!-- Summernote -->
     <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- Page Script -->
     <script>
         $(function () {
-            //Add text editor
-            $('#compose-textarea').summernote()
-        })</script>
+            $('#compose-textarea').summernote({
+                height: 300
+            });
+        });
+    </script>
 </body>
 </html>
-
 
