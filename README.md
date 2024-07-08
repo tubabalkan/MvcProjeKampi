@@ -2,17 +2,17 @@
 Murat Yücedağ hocamızın Yotube'da bulunan 100 derslik MVC Proje Kampı projesini tamamlamış bulunmaktayım.
 
 .Net MVC5 kullanarak geliştirmiş olduğum projede Backend tarafında C# ve Frontend tarafında HTML5, CSS, Bootstrap, Javascript ve Jquery bileşenlerini veri tabanı olarak da MSSQL kullandığım, SOLID prensiplerine ve N Katmanlı Kurumsal Mimari yapısına uygun olarak Business ,DataAccess, Entity ve Presentation olmak üzere 4 katmanda geliştirdim.
-# Kullanılan Teknolojiler
--Asp.Net Mvc5</br>
--MsSql</br>
--LINQ</br>
--Entity Framework-Code First</br>
--N Tier Arch.</br>
--Fluent Validation</br>
--Entity State</br>
--Proje seviyesinde Authorize</br>
+# 📌 Kullanılan Teknolojiler
+✔ Asp.Net Mvc5</br>
+✔ MsSql</br>
+✔ LINQ</br>
+✔ Entity Framework-Code First</br>
+✔ N Tier Arch.</br>
+✔ Fluent Validation</br>
+✔ Entity State</br>
+✔ Proje seviyesinde Authorize</br>
 
-# Proje İçi Görüntüler
+# 📌 Proje İçi Görüntüler
 
 ![KullanıcıGirişSayfası](https://github.com/tubabalkan/MvcProjeKampi/assets/100600148/d8c13239-9fdf-44b5-bc0c-d04d9f0edccc)
 ![yeteneksayfası](https://github.com/tubabalkan/MvcProjeKampi/assets/100600148/c1abc908-48fb-4a91-9b4a-c917b9375ed8)
